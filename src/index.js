@@ -1,6 +1,6 @@
-console.log("🚀 App starting...");
-import { EventEmitter } from 'events';
-EventEmitter.defaultMaxListeners = 20;
+// console.log("🚀 App starting...");
+// import { EventEmitter } from 'events';
+// EventEmitter.defaultMaxListeners = 20;
 
 import connectDB from "./db/index.js";
 import dotenv from "dotenv"
