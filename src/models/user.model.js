@@ -4,7 +4,6 @@ import bcrypt from "bcrypt"
 
 const userSchema = new Schema({
 
-
     username: {
         type: String,
         required: true,
@@ -27,7 +26,7 @@ const userSchema = new Schema({
         trim: true,
         index: true
     },
-    avatr: {
+    avatar: {
         type: String,
         required: true
     },
@@ -36,7 +35,7 @@ const userSchema = new Schema({
     },
     watchhistory: {
         type: Schema.Types.ObjectId,
-        ref: "video"
+        ref: "Video"
     },
     password: {
         type: String,
@@ -55,11 +54,11 @@ userSchema.pre("save", async function (next) {
     next()
 })
 
-userSchema.methods.isPasswordCorrect = async function (ppassword) {
+userSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password)
 }
 
-userSchema.methods.generateAccseeToken = function () {
+userSchema.methods.generateAccessToken = function () {
     return jwt.sign({
         _id: this._id,
         email: this.email,
